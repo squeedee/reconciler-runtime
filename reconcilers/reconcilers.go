@@ -250,7 +250,7 @@ func (r *ResourceReconciler) Reconcile(ctx context.Context, req ctrl.Request) (c
 	r.initializeConditions(resource)
 	result, err := r.reconcile(ctx, resource)
 
-	if r.hasStatus(originalResource) {
+	if r.hasStatus(resource) {
 		// restore last transition time for unchanged conditions
 		r.syncLastTransitionTime(r.conditions(resource), r.conditions(originalResource))
 
